@@ -6,7 +6,7 @@ typedef int Element;
 #define MaxSize 5
 
 typedef struct {
-  int data[MaxSize];
+  Element data[MaxSize];
   int front;
   int rear;
 } ArrayQueue;
