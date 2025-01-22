@@ -9,6 +9,8 @@ typedef struct TreeNode {
   struct TreeNode *right;
 } TreeNode;
 
+typedef TreeNode *pTreeNode;
+
 typedef struct {
   TreeNode *root;
   int count;
@@ -37,5 +39,8 @@ void inOrderBTreeRecur(BinaryTree *tree);
 
 // post
 void postOrderBTreeRecur(BinaryTree *tree);
+
+// level order
+void levelOrderBTree(BinaryTree *tree);
 
 #endif

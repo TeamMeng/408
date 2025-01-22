@@ -11,16 +11,16 @@ BinaryTree *initTree() {
   TreeNode *nodeF = createTreeNode('F');
   TreeNode *nodeG = createTreeNode('G');
   TreeNode *nodeH = createTreeNode('H');
-  TreeNode *nodeI = createTreeNode('I');
+  TreeNode *nodeK = createTreeNode('K');
 
   BinaryTree *tree = createdBinaryTree(nodeA);
+
   insertBinaryTree(tree, nodeA, nodeB, nodeE);
   insertBinaryTree(tree, nodeB, NULL, nodeC);
   insertBinaryTree(tree, nodeE, NULL, nodeF);
   insertBinaryTree(tree, nodeC, nodeD, NULL);
   insertBinaryTree(tree, nodeF, nodeG, NULL);
-  insertBinaryTree(tree, nodeG, nodeH, nodeI);
-
+  insertBinaryTree(tree, nodeG, nodeH, nodeK);
   return tree;
 }
 
@@ -32,6 +32,9 @@ int main(int argc, char *argv[]) {
   inOrderBTreeRecur(tree);
   printf("\npost: ");
   postOrderBTreeRecur(tree);
+
+  printf("\nlevel: ");
+  levelOrderBTree(tree);
 
   return 0;
 }

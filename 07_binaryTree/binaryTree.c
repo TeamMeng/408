@@ -1,4 +1,5 @@
 #include "binaryTree.h"
+#include "arrayQueue.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -106,4 +107,25 @@ void postOrderBTreeRecur(BinaryTree *tree) {
   if (tree) {
     postOrder(tree->root);
   }
+}
+
+// level order
+void levelOrderBTree(BinaryTree *tree) {
+  if (!tree && !tree->root) {
+    return;
+  }
+
+  ArrayQueue *q = createdArrayQueue();
+  pushArrayQueue(q, tree->root);
+  pTreeNode node;
+  while (popArrayQueue(q, &node) != -1) {
+    visitTreeNode(node);
+    if (node->left) {
+      pushArrayQueue(q, node->left);
+    }
+    if (node->right) {
+      pushArrayQueue(q, node->right);
+    }
+  }
+  releaseArrayQueue(q);
 }
