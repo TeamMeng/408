@@ -31,16 +31,24 @@ void insertBinaryTree(BinaryTree *tree, TreeNode *parent, TreeNode *left,
 
 void visitTreeNode(TreeNode *node);
 
-// pre
+// pre recur
 void preOrderBTreeRecur(BinaryTree *tree);
 
-// in
+// in recur
 void inOrderBTreeRecur(BinaryTree *tree);
 
-// post
+// post recur
 void postOrderBTreeRecur(BinaryTree *tree);
 
 // level order
 void levelOrderBTree(BinaryTree *tree);
 
+// pre no recur
+void preOrderBTreeNoRecur(BinaryTree *tree);
+
+// in no recur
+void inOrderBTreeNoRecur(BinaryTree *tree);
+
+// post no recur
+void postOrderBTreeNoRecur(BinaryTree *tree);
 #endif

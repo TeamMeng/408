@@ -36,5 +36,14 @@ int main(int argc, char *argv[]) {
   printf("\nlevel: ");
   levelOrderBTree(tree);
 
+  printf("\npre no recur: ");
+  preOrderBTreeNoRecur(tree);
+  printf("\nin no recur: ");
+  inOrderBTreeNoRecur(tree);
+  printf("\npost no recur: ");
+  postOrderBTreeNoRecur(tree);
+
+  releaseBinaryTree(tree);
+
   return 0;
 }
