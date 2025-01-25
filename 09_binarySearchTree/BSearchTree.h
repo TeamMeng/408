@@ -26,9 +26,21 @@ void releaseBinarySearchTree(BSearchTree *tree);
 // insert no recur
 void insertBSTree(BSearchTree *tree, Element elem);
 
+// insert recur
+void insertBSTreeRecur(BSearchTree *tree, Element elem);
+
 // search
 BSNode *searchBinarySearchNode(BSearchTree *tree, Element elem);
 
 // in
 void inOrderBinarySearchTree(BSearchTree *tree);
+
+// delete no recur
+void deleteBSTreeNoRecur(BSearchTree *tree, Element elem);
+
+// delete recur
+void deleteBSTreeRecur(BSearchTree *tree, Element elem);
+
+// heigh
+int heightBSNode(BSNode *node);
 #endif
