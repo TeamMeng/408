@@ -27,4 +27,12 @@ void visitAVLNode(AVLNode *node);
 // in order
 void inOrderAVLTree(AVLTree *tree);
 
+// insert
+void insertAVLTree(AVLTree *tree, Element elem);
+
+// create node
+AVLNode *createAVLNode(Element elem);
+
+// delete node
+void deleteAVLTree(AVLTree *tree, Element elem);
 #endif
