@@ -19,7 +19,17 @@ AGraph *createAGraph(int n) {
     return NULL;
   }
 
+  g->visited = (int *)malloc(sizeof(int) * n);
+
+  if (g->visited == NULL) {
+    printf("visited malloc failed!\n");
+    free(g->nodes);
+    free(g);
+    return NULL;
+  }
+
   memset(g->nodes, 0, sizeof(ArcNode) * n);
+  memset(g->visited, 0, sizeof(int) * n);
 
   return g;
 }
@@ -36,6 +46,8 @@ void releaseAGraph(AGraph *g) {
         ++count;
       }
     }
+    free(g->visited);
+    free(g);
     printf("free edges: %d\n", count);
   }
 }
@@ -97,4 +109,57 @@ void addAGraphEdge(AGraph *g, int x, int y, int w) {
       ++g->edgeNum;
     }
   }
+}
+
+void visitAGraphNode(ArcNode *node) { printf("%s\t", node->show); }
+
+void DFSAGraphTravel(AGraph *g, int v) {
+  ArcEdge *p;
+  g->visited[v] = 1;
+  visitAGraphNode(&g->nodes[v]);
+  p = g->nodes[v].firstEdge;
+  while (p) {
+    if (g->visited[p->no] == 0) {
+      DFSAGraphTravel(g, p->no);
+    }
+    p = p->next;
+  }
+}
+
+void resetAGraphVisit(AGraph *g) {
+  if (g && g->visited) {
+    memset(g->visited, 0, sizeof(int) * g->nodeNum);
+  }
+}
+
+void BFSAGraphTravel(AGraph *g, int v) {
+  int *que = (int *)malloc(sizeof(int) * g->nodeNum);
+  if (que == NULL) {
+    return;
+  }
+
+  int rear = 0, front = 0;
+  rear = (rear + 1) % g->nodeNum;
+  que[rear] = v;
+  int cur = 0;
+  ArcEdge *p;
+
+  while (front != rear) {
+    front = (front + 1) % g->nodeNum;
+    cur = que[front];
+    visitAGraphNode(&g->nodes[cur]);
+    g->visited[cur] = 1;
+
+    p = g->nodes[cur].firstEdge;
+    while (p) {
+      if (g->visited[p->no] == 0) {
+        rear = (rear + 1) % g->nodeNum;
+        que[rear] = p->no;
+        g->visited[p->no] = 1;
+      }
+      p = p->next;
+    }
+  }
+
+  free(que);
 }

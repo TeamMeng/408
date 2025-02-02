@@ -16,6 +16,13 @@ int main(int argc, char *argv[]) {
 
   printf("edge: %d\n", g->edgeNum);
 
+  DFSAGraphTravel(g, 0);
+  printf("\n");
+  resetAGraphVisit(g);
+
+  BFSAGraphTravel(g, 0);
+  printf("\n");
+
   releaseAGraph(g);
   return 0;
 }

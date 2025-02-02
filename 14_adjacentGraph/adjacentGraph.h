@@ -18,6 +18,7 @@ typedef struct {
 
 typedef struct {
   ArcNode *nodes;
+  int *visited;
   int nodeNum;
   int edgeNum;
   int directed;
@@ -30,5 +31,13 @@ void releaseAGraph(AGraph *g);
 void initAGraph(AGraph *g, int num, char *names[], int directed);
 
 void addAGraphEdge(AGraph *g, int x, int y, int w);
+
+void visitAGraphNode(ArcNode *node);
+
+void DFSAGraphTravel(AGraph *g, int v);
+
+void resetAGraphVisit(AGraph *g);
+
+void BFSAGraphTravel(AGraph *g, int v);
 
 #endif

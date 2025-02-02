@@ -19,5 +19,13 @@ static void setupMatrixGraph(MGraph *g) {
 int main(int argc, char *argv[]) {
   MGraph g;
   setupMatrixGraph(&g);
+
+  clearMGraphVisit();
+  DFSMGraphTravel(&g, 0);
+  printf("\n");
+
+  clearMGraphVisit();
+  BFSMGraphTravel(&g, 0);
+  printf("\n");
   return 0;
 }
